@@ -6,6 +6,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(labelled)
 ```
 
 ```{r}
@@ -14,10 +15,37 @@ no_grad <- tibble(no_grad)
 ```
 
 ```{r}
+var_label(no_grad$ss) <- '2nd Semester'
+var_label(no_grad$my) <- 'Mid Year Term'
+var_label(no_grad$fs) <- 'First Semester'
+```
+
+```{r}
 ggplot(data = no_grad) + 
-  geom_point(mapping = aes(x = campus, y = ss, color = college)) + 
-  xlab("Campus") + 
-  ylab("Number of Graduates") + 
-  scale_x_discrete(labels=c("bay" = "Bayombong")) +
-  scale_color_manual(labels = c("CFERM", "COE"))
+  geom_point(mapping = aes(x = Campus, y = ss, color = College), position = "jitter") +
+  ylab("Number of Graduates") +
+  labs(title = "Number of Graduates for each Program per College for 2nd Semester of SY 2021-2022")
+```
+
+```{r}
+ggplot(no_grad, aes(x = Campus, y = ss, fill = College)) +
+  geom_col() +
+  ylab("Number of Graduates")
+```
+
+```{r}
+no_grad %>%
+  group_by(College) %>%
+  summarise(sum_no_grad_college = sum(ss),
+            .groups = 'drop')
+```
+
+```{r}
+ggplot(no_grad, aes(x = "", y = ss, fill = College)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = ss),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y") +
+  scale_fill_brewer() +
+  theme_bw()
 ```

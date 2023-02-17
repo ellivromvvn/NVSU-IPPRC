@@ -1,8 +1,25 @@
 ---
-title: "Untitled"
-format: html
+title: "NVSU ANNUAL ACCOMPLISHMENT REPORT 2022"
+subtitle: "ACADEMIC AFFAIRS"
+author: IPPRC
+format: 
+  docx:
+    toc: true
 editor: visual
+execute:
+  echo: false
+  warning: false
 ---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+```
+
+# ACADEMIC AFFAIRS
+
+## STUDENTS
+
+### GRADUATES
 
 ```{r}
 library(tidyverse)
@@ -24,7 +41,9 @@ var_label(no_grad$fs) <- 'First Semester'
 ggplot(data = no_grad) + 
   geom_point(mapping = aes(x = Campus, y = ss, color = College), position = "jitter") +
   ylab("Number of Graduates") +
-  labs(title = "Number of Graduates for each Program per College for 2nd Semester of SY 2021-2022")
+  labs(title = "Distribution of Number of Graduates for 2022") +
+  theme(axis.text=element_text(size=12),
+        axis.title=element_text(size=12,face="bold"))
 ```
 
 ```{r}
@@ -34,18 +53,111 @@ ggplot(no_grad, aes(x = Campus, y = ss, fill = College)) +
 ```
 
 ```{r}
-no_grad %>%
+no_grad_college <-
+  no_grad %>%
   group_by(College) %>%
-  summarise(sum_no_grad_college = sum(ss),
-            .groups = 'drop')
+  summarise(total_grad = sum(ss),
+            .groups = 'drop') %>%
+  mutate(percent_grad = round((total_grad/sum(no_grad$ss))*100,
+                              digits = 2))
 ```
 
 ```{r}
+#| output: false
+
 ggplot(no_grad, aes(x = "", y = ss, fill = College)) +
   geom_col(color = "black") +
   geom_text(aes(label = ss),
             position = position_stack(vjust = 0.5)) +
   coord_polar(theta = "y") +
   scale_fill_brewer() +
-  theme_bw()
+  theme_bw() +
+  ylab("Bayombong Campus") +
+  xlab("")
 ```
+
+```{r}
+#| output: false
+ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = percent_grad),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y") +
+  scale_fill_brewer() +
+  theme_void() +
+  ylab("Bayombong Campus")
+```
+
+#### TOTAL
+
+### STUDENT POPULATION
+
+#### TOTAL 
+
+### SCHOLARSHIP
+
+#### TOTAL
+
+### STUDENT FINANCIAL ASSISTANCE RECIPIENTS
+
+### STUDENTS INVOLVED IN INTER-COUNTRY MOBILITY
+
+## FACULTY
+
+### UNIVERSITY PROFESSOR
+
+### PROFESSORS
+
+### ASSOCIATE PROFESSORS
+
+### ASSISTANT PROFESSORS
+
+### INSTRUCTORS
+
+### EMERGENCY INSTRUCTORS
+
+### TOTAL
+
+### 9 ACCREDITED PROFESSORS
+
+### 191 RECLASSIFIED FACULTY MEMBERS THROUGH NBC 461
+
+### 12 BATCH 1 MERIT PROMOTIONS
+
+### 4 NEW EMPLOYEES THRU SCRAP AND BUILD
+
+### 207 APPOINTEES
+
+## PROGRAMS
+
+### CENTER OF EXCELLENCE
+
+### CENTER OF DEVELOPMENT
+
+### UNDERGRADUATE PROGRAMS
+
+#### WITH ACCREDITATION
+
+#### ACCREDITATION STATUS
+
+## LICENSURE EXAM PERFORMANCE
+
+### FIRST TIME BOARD EXAM PASSERS
+
+#### BAYOMBONG
+
+##### AGRICULTURE
+
+##### ENGINEERING
+
+##### FORESTRY
+
+##### TEACHER EDUCATION
+
+##### VETERINARY MEDICINE
+
+#### BAMBANG
+
+##### TEACHER EDUCATION
+
+##### ENGINEERING

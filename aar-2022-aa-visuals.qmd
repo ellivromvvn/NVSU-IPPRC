@@ -2,7 +2,7 @@
 title: "NVSU ANNUAL ACCOMPLISHMENT REPORT 2022"
 subtitle: "ACADEMIC AFFAIRS"
 author: IPPRC
-format: 
+format:
   docx:
     toc: true
 editor: visual
@@ -44,11 +44,15 @@ ggplot(data = no_grad) +
   labs(title = "Distribution of Number of Graduates for 2022") +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=12,face="bold"))
+  
 ```
 
+### TOTAL
+
 ```{r}
+lab1 <- aggregate(ss ~ College, no_grad, sum)
 ggplot(no_grad, aes(x = Campus, y = ss, fill = College)) +
-  geom_col() +
+  geom_col(position = "dodge") +
   ylab("Number of Graduates")
 ```
 
@@ -88,11 +92,9 @@ ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
   ylab("Bayombong Campus")
 ```
 
-#### TOTAL
-
 ### STUDENT POPULATION
 
-#### TOTAL 
+#### TOTAL
 
 ### SCHOLARSHIP
 

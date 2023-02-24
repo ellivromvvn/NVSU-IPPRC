@@ -23,35 +23,28 @@ knitr::opts_chunk$set(fig.align = 'center')
 
 ```{r}
 library(tidyverse)
-library(labelled)
 ```
 
 ```{r}
-no_grad <- read_csv("csv/data2.csv")
-no_grad <- tibble(no_grad)
+grad <- read_csv("/Users/mildo/OneDrive/Documents/R/NVSU-IPPRC/csv/data1.csv")
+grad <- tibble(grad)
 ```
 
 ```{r}
-faculty <- read_csv("csv/data2.csv")
+faculty <- read_csv("/Users/mildo/OneDrive/Documents/R/NVSU-IPPRC/csv/data2.csv")
 faculty <- tibble(faculty)
 faculty <-
   faculty %>%
   mutate_at(vars(Rank), factor)
 faculty <- 
   faculty %>%
-  mutate(Rank = factor(Rank, levels = c("Instructor", "Assistant Professor",
-                                      "Associate Professor", "Professor")))
+  mutate(Rank = factor(Rank, levels = c("Instructor", "Agrad_ssistant Profegrad_ssor",
+                                      "Agrad_ssociate Profegrad_ssor", "Profegrad_ssor")))
 ```
 
 ```{r}
-var_label(no_grad$ss) <- '2nd Semester'
-var_label(no_grad$my) <- 'Mid Year Term'
-var_label(no_grad$fs) <- 'First Semester'
-```
-
-```{r}
-ggplot(data = no_grad) + 
-  geom_point(mapping = aes(x = Campus, y = ss, color = College), position = "jitter") +
+ggplot(data = grad) + 
+  geom_point(mapping = aes(x = Campus, y = grad_ss, color = College), position = "jitter") +
   ylab("Number of Graduates") +
   labs(title = "Distribution of Number of Graduates for 2022") +
   theme(axis.text=element_text(size=12),
@@ -62,34 +55,27 @@ ggplot(data = no_grad) +
 ### TOTAL
 
 ```{r}
-lab1 <- aggregate(ss ~ College, no_grad, sum)
-ggplot(no_grad, aes(x = Campus, y = ss, fill = College)) +
+ggplot(grad, aes(x = Campus, y = grad_ss, fill = College)) +
   geom_col(position = "dodge") +
   ylab("Number of Graduates")
-
-ggplot(faculty) + 
-  # dodge rather than stack produces grouped bar plot
-  geom_bar(aes(x = College, fill = College)) +
-  scale_fill_manual(values = c("yellow", "purple4", "lightgreen", "pink", "darkgreen", "red", "blue", "gray")) +
-  ylab(" Number of Faculty")
 ```
 
 ```{r}
-no_grad_college <-
-  no_grad %>%
+grad_college <-
+  grad %>%
   group_by(College) %>%
-  summarise(total_grad = sum(ss),
+  summarise(total_grad = sum(grad_ss),
             .groups = 'drop') %>%
-  mutate(percent_grad = round((total_grad/sum(no_grad$ss))*100,
+  mutate(percent_grad = round((total_grad/sum(grad$grad_ss))*100,
                               digits = 2))
 ```
 
 ```{r}
 #| output: false
 
-ggplot(no_grad, aes(x = "", y = ss, fill = College)) +
+ggplot(grad, aes(x = "", y = grad_ss, fill = College)) +
   geom_col(color = "black") +
-  geom_text(aes(label = ss),
+  geom_text(aes(label = grad_ss),
             position = position_stack(vjust = 0.5)) +
   coord_polar(theta = "y") +
   scale_fill_brewer() +
@@ -100,7 +86,7 @@ ggplot(no_grad, aes(x = "", y = ss, fill = College)) +
 
 ```{r}
 #| output: false
-ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
+ggplot(grad_college, aes(x = "", y = percent_grad, fill = College)) +
   geom_col(color = "black") +
   geom_text(aes(label = percent_grad),
             position = position_stack(vjust = 0.5)) +
@@ -118,7 +104,7 @@ ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
 
 #### TOTAL
 
-### STUDENT FINANCIAL ASSISTANCE RECIPIENTS
+### STUDENT FINANCIAL Agrad_ssISTANCE RECIPIENTS
 
 ### STUDENTS INVOLVED IN INTER-COUNTRY MOBILITY
 
@@ -143,9 +129,9 @@ ggplot(faculty) +
 
 ### TOTAL
 
-### 9 ACCREDITED PROFESSORS
+### 9 ACCREDITED PROFEgrad_ssORS
 
-### 191 RECLASSIFIED FACULTY MEMBERS THROUGH NBC 461
+### 191 RECLAgrad_ssIFIED FACULTY MEMBERS THROUGH NBC 461
 
 ### 12 BATCH 1 MERIT PROMOTIONS
 
@@ -167,7 +153,7 @@ ggplot(faculty) +
 
 ## LICENSURE EXAM PERFORMANCE
 
-### FIRST TIME BOARD EXAM PASSERS
+### FIRST TIME BOARD EXAM PAgrad_ssERS
 
 #### BAYOMBONG
 

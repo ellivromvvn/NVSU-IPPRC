@@ -30,6 +30,11 @@ no_grad <- tibble(no_grad)
 ```
 
 ```{r}
+faculty <- read_csv("csv/data2.csv")
+faculty <- tibble(faculty)
+```
+
+```{r}
 var_label(no_grad$ss) <- '2nd Semester'
 var_label(no_grad$my) <- 'Mid Year Term'
 var_label(no_grad$fs) <- 'First Semester'
@@ -101,6 +106,14 @@ ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
 ### STUDENTS INVOLVED IN INTER-COUNTRY MOBILITY
 
 ## FACULTY
+
+```{r}
+ggplot(faculty) + 
+  # dodge rather than stack produces grouped bar plot
+  geom_bar(aes(x = College, fill = Position),
+           position = "dodge")
+```
+
 
 ### UNIVERSITY PROFESSOR
 

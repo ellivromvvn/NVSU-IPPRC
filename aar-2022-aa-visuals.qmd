@@ -27,8 +27,20 @@ library(labelled)
 ```
 
 ```{r}
-no_grad <- read_csv("csv/stud-grad.csv")
+no_grad <- read_csv("csv/data2.csv")
 no_grad <- tibble(no_grad)
+```
+
+```{r}
+faculty <- read_csv("csv/data2.csv")
+faculty <- tibble(faculty)
+faculty <-
+  faculty %>%
+  mutate_at(vars(Rank), factor)
+faculty <- 
+  faculty %>%
+  mutate(Rank = factor(Rank, levels = c("Instructor", "Assistant Professor",
+                                      "Associate Professor", "Professor")))
 ```
 
 ```{r}
@@ -54,6 +66,12 @@ lab1 <- aggregate(ss ~ College, no_grad, sum)
 ggplot(no_grad, aes(x = Campus, y = ss, fill = College)) +
   geom_col(position = "dodge") +
   ylab("Number of Graduates")
+
+ggplot(faculty) + 
+  # dodge rather than stack produces grouped bar plot
+  geom_bar(aes(x = College, fill = College)) +
+  scale_fill_manual(values = c("yellow", "purple4", "lightgreen", "pink", "darkgreen", "red", "blue", "gray")) +
+  ylab(" Number of Faculty")
 ```
 
 ```{r}
@@ -106,15 +124,20 @@ ggplot(no_grad_college, aes(x = "", y = percent_grad, fill = College)) +
 
 ## FACULTY
 
-### UNIVERSITY PROFESSOR
+```{r}
+ggplot(faculty) + 
+  # dodge rather than stack produces grouped bar plot
+  geom_bar(aes(x = College, fill = College)) +
+  scale_fill_manual(values = c("yellow", "purple4", "lightgreen", "pink", "darkgreen", "red", "blue", "gray")) +
+  ylab(" Number of Faculty")
+```
 
-### PROFESSORS
-
-### ASSOCIATE PROFESSORS
-
-### ASSISTANT PROFESSORS
-
-### INSTRUCTORS
+```{r}
+ggplot(faculty) + 
+  # dodge rather than stack produces grouped bar plot
+  geom_bar(aes(x = College, fill = Rank), position = "dodge") +
+  ylab("Number of Faculty")
+```
 
 ### EMERGENCY INSTRUCTORS
 

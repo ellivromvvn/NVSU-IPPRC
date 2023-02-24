@@ -1,0 +1,214 @@
+Number,Position,Rank,College,Campus
+1,Associate Professor V,Associate Professor,COA,Bayombong
+2,Assistant Professor I,Assistant Professor,COA,Bayombong
+3,Assistant Professor II,Assistant Professor,COA,Bayombong
+4,Professor V,Professor,COA,Bayombong
+5,Assistant Professor I,Assistant Professor,COA,Bayombong
+6,Assistant Professor I,Assistant Professor,COA,Bayombong
+7,Assistant Professor III,Assistant Professor,COA,Bayombong
+8,Associate Professor IV,Associate Professor,COA,Bayombong
+9,Instructor I,Instructor,COA,Bayombong
+10,Associate Professor V,Associate Professor,COA,Bayombong
+11,Associate Professor IV,Associate Professor,COA,Bayombong
+12,Assistant Professor III,Assistant Professor,COA,Bayombong
+13,Associate Professor V,Associate Professor,COA,Bayombong
+14,Professor II,Professor,COA,Bayombong
+15,Assistant Professor I,Assistant Professor,COA,Bayombong
+16,Associate Professor V,Associate Professor,COA,Bayombong
+17,Associate Professor II,Associate Professor,COA,Bayombong
+18,Professor III,Professor,COA,Bayombong
+19,Assistant Professor I,Assistant Professor,COA,Bayombong
+20,Professor VI,Professor,COA,Bayombong
+21,Instructor I,Instructor,COA,Bayombong
+22,Professor VI,Professor,COA,Bayombong
+23,Associate Professor I,Associate Professor,CAS,Bayombong
+24,Instructor I,Instructor,CAS,Bayombong
+25,Instructor I,Instructor,CAS,Bayombong
+26,Assistant Professor III,Assistant Professor,CAS,Bayombong
+27,Associate Professor IV,Associate Professor,CAS,Bayombong
+28,Associate Professor I,Associate Professor,CAS,Bayombong
+29,Professor II,Professor,CAS,Bayombong
+30,Associate Professor V,Associate Professor,CAS,Bayombong
+31,Associate Professor V,Associate Professor,CAS,Bayombong
+32,Associate Professor V,Associate Professor,CAS,Bayombong
+33,Associate Professor V,Associate Professor,CAS,Bayombong
+34,Instructor III,Instructor,CAS,Bayombong
+35,Assistant Professor II,Assistant Professor,CAS,Bayombong
+36,Instructor I,Instructor,CAS,Bayombong
+37,Assistant Professor III,Assistant Professor,CAS,Bayombong
+38,Instructor I,Instructor,CAS,Bayombong
+39,Associate Professor IV,Associate Professor,CAS,Bayombong
+40,Associate Professor V,Associate Professor,CAS,Bayombong
+41,Associate Professor V,Associate Professor,CAS,Bayombong
+42,Instructor I,Instructor,CAS,Bayombong
+43,Instructor III,Instructor,CAS,Bayombong
+44,Instructor I,Instructor,CAS,Bayombong
+45,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+46,Assistant Professor I,Assistant Professor,CAS,Bayombong
+47,Associate Professor II,Associate Professor,CAS,Bayombong
+48,Associate Professor I,Associate Professor,CAS,Bayombong
+49,Instructor I,Instructor,CAS,Bayombong
+50,Instructor II,Instructor,CAS,Bayombong
+51,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+52,Instructor II,Instructor,CAS,Bayombong
+53,Assistant Professor III,Assistant Professor,CAS,Bayombong
+54,Assistant Professor I,Assistant Professor,CAS,Bayombong
+55,Associate Professor III,Associate Professor,CAS,Bayombong
+56,Instructor I,Instructor,CAS,Bayombong
+57,Instructor II,Instructor,CAS,Bayombong
+58,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+59,Assistant Professor I,Assistant Professor,CAS,Bayombong
+60,Professor VI,Professor,CAS,Bayombong
+61,Associate Professor III,Associate Professor,CAS,Bayombong
+62,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+63,Associate Professor I,Associate Professor,CAS,Bayombong
+64,Associate Professor IV,Associate Professor,CAS,Bayombong
+65,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+66,Instructor III,Instructor,CAS,Bayombong
+67,Associate Professor II,Associate Professor,CAS,Bayombong
+68,Assistant Professor III,Assistant Professor,CAS,Bayombong
+69,Instructor I,Instructor,CAS,Bayombong
+70,Assistant Professor II,Assistant Professor,CAS,Bayombong
+71,Instructor I,Instructor,CAS,Bayombong
+72,Instructor I,Instructor,CAS,Bayombong
+73,Associate Professor IV,Associate Professor,CAS,Bayombong
+74,Instructor I,Instructor,CAS,Bayombong
+75,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+76,Associate Professor II,Associate Professor,CAS,Bayombong
+77,Instructor I,Instructor,CAS,Bayombong
+78,Associate Professor I,Associate Professor,CAS,Bayombong
+79,Instructor I,Instructor,CAS,Bayombong
+80,Instructor I,Instructor,CAS,Bayombong
+81,Professor VI,Professor,CAS,Bayombong
+82,Assistant Professor I,Assistant Professor,CAS,Bayombong
+83,Assistant Professor IV,Assistant Professor,CAS,Bayombong
+84,Professor V,Professor,CAS,Bayombong
+85,Assistant Professor I,Assistant Professor,CAS,Bayombong
+86,Assistant Professor I,Assistant Professor,CBE,Bayombong
+87,Instructor III,Instructor,CBE,Bayombong
+88,Instructor I,Instructor,CBE,Bayombong
+89,Assistant Professor II,Assistant Professor,CBE,Bayombong
+90,Professor I,Professor,CBE,Bayombong
+91,Associate Professor II,Associate Professor,CBE,Bayombong
+92,Professor III,Professor,CBE,Bayombong
+93,Assistant Professor I,Assistant Professor,CBE,Bayombong
+94,Assistant Professor I,Assistant Professor,CBE,Bayombong
+95,Assistant Professor III,Assistant Professor,CBE,Bayombong
+96,Assistant Professor I,Assistant Professor,CBE,Bayombong
+97,Instructor III,Instructor,CBE,Bayombong
+98,Associate Professor I,Associate Professor,CBE,Bayombong
+99,Professor VI,Professor,CBE,Bayombong
+100,Associate Professor V,Associate Professor,CBE,Bayombong
+101,Associate Professor V,Associate Professor,CBE,Bayombong
+102,Assistant Professor III,Assistant Professor,CBE,Bayombong
+103,Assistant Professor I,Assistant Professor,CBE,Bayombong
+104,Assistant Professor III,Assistant Professor,CBE,Bayombong
+105,Associate Professor V,Associate Professor,CFERM,Bayombong
+106,Associate Professor III,Associate Professor,CFERM,Bayombong
+107,Professor III,Professor,CFERM,Bayombong
+108,Professor VI,Professor,CFERM,Bayombong
+109,Instructor I,Instructor,CFERM,Bayombong
+110,Assistant Professor III,Assistant Professor,CFERM,Bayombong
+111,Instructor I,Instructor,CFERM,Bayombong
+112,Instructor I,Instructor,CFERM,Bayombong
+113,Instructor I,Instructor,CFERM,Bayombong
+114,Professor II,Professor,CFERM,Bayombong
+115,Assistant Professor II,Assistant Professor,CFERM,Bayombong
+116,Associate Professor I,Associate Professor,CFERM,Bayombong
+117,Instructor I,Instructor,CFERM,Bayombong
+118,Professor VI,Professor,CFERM,Bayombong
+119,Professor V,Professor,CFERM,Bayombong
+120,Professor VI,Professor,CFERM,Bayombong
+121,Associate Professor V,Associate Professor,CFERM,Bayombong
+122,Assistant Professor III,Assistant Professor,CFERM,Bayombong
+123,Associate Professor II,Associate Professor,CHE,Bayombong
+124,Associate Professor V,Associate Professor,CHE,Bayombong
+125,Instructor I,Instructor,CHE,Bayombong
+126,Assistant Professor III,Assistant Professor,CHE,Bayombong
+127,Associate Professor IV,Associate Professor,CHE,Bayombong
+128,Associate Professor I,Associate Professor,CHE,Bayombong
+129,Associate Professor II,Associate Professor,CHE,Bayombong
+130,Instructor I,Instructor,CHE,Bayombong
+131,Assistant Professor I,Assistant Professor,CHE,Bayombong
+132,Instructor I,Instructor,CHE,Bayombong
+133,Instructor III,Instructor,CHE,Bayombong
+134,Associate Professor I,Associate Professor,CHE,Bayombong
+135,Instructor II,Instructor,CHE,Bayombong
+136,Associate Professor I,Associate Professor,CHE,Bayombong
+137,Instructor I,Instructor,COE,Bayombong
+138,Instructor I,Instructor,COE,Bayombong
+139,Professor I,Professor,COE,Bayombong
+140,Instructor I,Instructor,COE,Bayombong
+141,Associate Professor V,Associate Professor,COE,Bayombong
+142,Professor VI,Professor,COE,Bayombong
+143,Instructor I,Instructor,COE,Bayombong
+144,Instructor I,Instructor,COE,Bayombong
+145,Associate Professor V,Associate Professor,COE,Bayombong
+146,Assistant Professor IV,Assistant Professor,COE,Bayombong
+147,Assistant Professor IV,Assistant Professor,COE,Bayombong
+148,Assistant Professor IV,Assistant Professor,COE,Bayombong
+149,Instructor I,Instructor,COE,Bayombong
+150,Instructor I,Instructor,COE,Bayombong
+151,Assistant Professor II,Assistant Professor,COE,Bayombong
+152,Assistant Professor I,Assistant Professor,COE,Bayombong
+153,Assistant Professor I,Assistant Professor,COE,Bayombong
+154,Instructor I,Instructor,COE,Bayombong
+155,Instructor I,Instructor,COE,Bayombong
+156,Instructor III,Instructor,COE,Bayombong
+157,Instructor I,Instructor,COE,Bayombong
+158,Assistant Professor I,Assistant Professor,COE,Bayombong
+159,Instructor I,Instructor,COE,Bayombong
+160,Associate Professor V,Associate Professor,COE,Bayombong
+161,Assistant Professor II,Assistant Professor,CTE,Bayombong
+162,Professor V,Professor,CTE,Bayombong
+163,Assistant Professor IV,Assistant Professor,CTE,Bayombong
+164,Assistant Professor II,Assistant Professor,CTE,Bayombong
+165,Assistant Professor II,Assistant Professor,CTE,Bayombong
+166,Instructor II,Instructor,CTE,Bayombong
+167,Assistant Professor III,Assistant Professor,CTE,Bayombong
+168,Professor III,Professor,CTE,Bayombong
+169,Associate Professor V,Associate Professor,CTE,Bayombong
+170,Assistant Professor III,Assistant Professor,CTE,Bayombong
+171,Instructor I,Instructor,CTE,Bayombong
+172,Assistant Professor IV,Assistant Professor,CTE,Bayombong
+173,Associate Professor I,Associate Professor,CTE,Bayombong
+174,Assistant Professor IV,Assistant Professor,CTE,Bayombong
+175,Instructor I,Instructor,CTE,Bayombong
+176,Associate Professor V,Associate Professor,CTE,Bayombong
+177,Instructor I,Instructor,CTE,Bayombong
+178,Assistant Professor II,Assistant Professor,CTE,Bayombong
+179,Assistant Professor II,Assistant Professor,CTE,Bayombong
+180,Associate Professor II,Associate Professor,CTE,Bayombong
+181,Assistant Professor II,Assistant Professor,CTE,Bayombong
+182,Instructor I,Instructor,CTE,Bayombong
+183,Assistant Professor III,Assistant Professor,CTE,Bayombong
+184,Instructor I,Instructor,CTE,Bayombong
+185,Associate Professor III,Associate Professor,CTE,Bayombong
+186,Instructor I,Instructor,CTE,Bayombong
+187,Assistant Professor III,Assistant Professor,CTE,Bayombong
+188,Professor VI,Professor,CTE,Bayombong
+189,Assistant Professor IV,Assistant Professor,CTE,Bayombong
+190,Instructor I,Instructor,CTE,Bayombong
+191,Assistant Professor II,Assistant Professor,CTE,Bayombong
+192,Instructor III,Instructor,CTE,Bayombong
+193,Professor VI,Professor,CTE,Bayombong
+194,Associate Professor I,Associate Professor,CTE,Bayombong
+195,Assistant Professor II,Assistant Professor,CTE,Bayombong
+196,Associate Professor V,Associate Professor,CTE,Bayombong
+197,Assistant Professor I,Assistant Professor,CTE,Bayombong
+198,Instructor I,Instructor,CTE,Bayombong
+199,Assistant Professor I,Assistant Professor,CTE,Bayombong
+200,Instructor I,Instructor,CTE,Bayombong
+201,Instructor III,Instructor,CTE,Bayombong
+202,Associate Professor I,Associate Professor,CTE,Bayombong
+203,Assistant Professor II,Assistant Professor,CTE,Bayombong
+204,Assistant Professor II,Assistant Professor,CTE,Bayombong
+205,Instructor I,Instructor,CVM,Bayombong
+206,Instructor I,Instructor,CVM,Bayombong
+207,Associate Professor I,Associate Professor,CVM,Bayombong
+208,Assistant Professor I,Assistant Professor,CVM,Bayombong
+209,Instructor II,Instructor,CVM,Bayombong
+210,Instructor I,Instructor,CVM,Bayombong
+211,Professor III,Professor,CVM,Bayombong
+212,Instructor I,Instructor,CVM,Bayombong
+213,Associate Professor IV,Associate Professor,CVM,Bayombong

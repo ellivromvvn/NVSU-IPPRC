@@ -1,0 +1,40 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+grad_college <-
+  grad %>%
+  group_by(College) %>%
+  summarise(total_grad = sum(grad_ss),
+            .groups = 'drop') %>%
+  mutate(percent_grad = round((total_grad/sum(grad$grad_ss))*100,
+                              digits = 2))
+```
+
+```{r}
+#| output: false
+
+ggplot(grad, aes(x = "", y = grad_ss, fill = College)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = grad_ss),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y") +
+  scale_fill_brewer() +
+  theme_bw() +
+  ylab("Bayombong Campus") +
+  xlab("")
+```
+
+```{r}
+#| output: false
+ggplot(grad_college, aes(x = "", y = percent_grad, fill = College)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = percent_grad),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y") +
+  scale_fill_brewer() +
+  theme_void() +
+  ylab("Bayombong Campus")
+```

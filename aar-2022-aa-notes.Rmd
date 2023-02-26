@@ -38,3 +38,8 @@ ggplot(grad_college, aes(x = "", y = percent_grad, fill = College)) +
   theme_void() +
   ylab("Bayombong Campus")
 ```
+
+## Reminders
+
+1. CAS Enrollment don't tally.
+2. CTE Enrollment don't tally.

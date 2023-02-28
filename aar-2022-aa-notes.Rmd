@@ -39,7 +39,23 @@ ggplot(grad_college, aes(x = "", y = percent_grad, fill = College)) +
   ylab("Bayombong Campus")
 ```
 
+```{r}
+ggplot(grad, aes(x= College, y= grad_ss, colour="green", label=Name))+
+  geom_point() +geom_text(hjust=0, vjust=0)
+```
+
+```{r}
+ggplot(data = grad) + 
+  geom_point(mapping = aes(x = College, y = grad_ss,
+                           label = Program)) + geom_text()
+```
+
+
 ## Reminders
 
 1. CAS Enrollment don't tally.
 2. CTE Enrollment don't tally.
+3. data of CBE in enrollment is est.
+4. BSBA has enrllment is not according to semester.
+5. Phd graduates in COA, unclear.Placed in PhDA
+

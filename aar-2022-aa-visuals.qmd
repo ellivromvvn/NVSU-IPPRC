@@ -38,8 +38,6 @@ faculty <-
 
 ## Undergraduate/ Graduate Programs
 
-
-
 ## Center Of Excellence
 
 ## Center of Development
@@ -50,13 +48,27 @@ faculty <-
 
 ## Enrollment Profile
 
-## Performance in the Licensure  Exam
+## Performance in the Licensure Exam
 
 ## Graduation Profile
 
 ```{r}
+ggplot(data = grad,
+       aes(x = College, y = grad_ss)) +
+  geom_point(aes(color = College, size = Level)) +
+  scale_color_manual(values = c("yellow", "lightgreen", "red",
+                                "blue"))+
+  geom_text(hjust = -.2, vjust = -.8, 
+            aes(label = ifelse(grad_ss>50,
+                               as.character(Program),''))) +
+  ylim(0, 100)
+```
+
+```{r}
 ggplot(data = grad) + 
-  geom_point(mapping = aes(x = Campus, y = grad_ss, color = College), position = "jitter") +
+  geom_point(mapping = aes(x = College, y = grad_ss,
+                           label = Program)) +
+  geom_text() +
   ylab("Number of Graduates") +
   labs(title = "Distribution of Number of Graduates for 2022") +
   theme(axis.text=element_text(size=12),
@@ -88,7 +100,8 @@ ggplot(faculty) +
   # dodge rather than stack produces grouped bar plot
   geom_bar(aes(x = College, fill = College)) +
   scale_fill_manual(values = c("yellow", "purple4", "lightgreen", "pink", "darkgreen", "red", "blue", "gray")) +
-  ylab(" Number of Faculty")
+  ylab(" Number of Faculty") +
+  geom_text(aes(label = Weight), vjust = -0.2)
 ```
 
 ```{r}

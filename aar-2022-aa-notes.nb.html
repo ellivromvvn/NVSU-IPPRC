@@ -1809,28 +1809,6 @@ display: none;
   geom_point(mapping = aes(x = College, y = grad_ss,
                            label = Program)) + geom_text()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogSWdub3JpbmcgdW5rbm93biBhZXN0aGV0aWNzOiBsYWJlbFxuIn0= -->
-<pre><code>Warning: Ignoring unknown aesthetics: label</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYGdlb21fdGV4dCgpYDpcbiEgUHJvYmxlbSB3aGlsZSBzZXR0aW5nIHVwIGdlb20uXG7ihLkgRXJyb3Igb2NjdXJyZWQgaW4gdGhlIDJuZCBsYXllci5cbkNhdXNlZCBieSBlcnJvciBpbiBgY29tcHV0ZV9nZW9tXzEoKWA6XG4hIGBnZW9tX3RleHQoKWAgcmVxdWlyZXMgdGhlIGZvbGxvd2luZyBtaXNzaW5nIGFlc3RoZXRpY3M6IHgsIHksXG4gIGFuZCBsYWJlbFxuQmFja3RyYWNlOlxuICAxLiBiYXNlIChsb2NhbCkgYDxmbj5gKHgpXG4gIDIuIGdncGxvdDI6OjpwcmludC5nZ3Bsb3QoeClcbiAgNC4gZ2dwbG90Mjo6OmdncGxvdF9idWlsZC5nZ3Bsb3QoeClcbiAgNS4gZ2dwbG90Mjo6OmJ5X2xheWVyKC4uLilcbiAxMi4gZ2dwbG90MiAobG9jYWwpIGYobCA9IGxheWVyc1tbaV1dLCBkID0gZGF0YVtbaV1dKVxuIDEzLiBsJGNvbXB1dGVfZ2VvbV8xKGQpXG4gMTQuIGdncGxvdDIgKGxvY2FsKSBjb21wdXRlX2dlb21fMSguLi4sIHNlbGYgPSBzZWxmKVxuIn0= -->
-<pre><code>Error in `geom_text()`:
-! Problem while setting up geom.
-ℹ Error occurred in the 2nd layer.
-Caused by error in `compute_geom_1()`:
-! `geom_text()` requires the following missing aesthetics: x, y,
-  and label
-Backtrace:
-  1. base (local) `&lt;fn&gt;`(x)
-  2. ggplot2:::print.ggplot(x)
-  4. ggplot2:::ggplot_build.ggplot(x)
-  5. ggplot2:::by_layer(...)
- 12. ggplot2 (local) f(l = layers[[i]], d = data[[i]])
- 13. l$compute_geom_1(d)
- 14. ggplot2 (local) compute_geom_1(..., self = self)</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-plot-begin eyJoZWlnaHQiOjQzMi42MzI5LCJ3aWR0aCI6NzAwLCJzaXplX2JlaGF2aW9yIjowLCJjb25kaXRpb25zIjpbXX0= -->
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArwAAAGwCAMAAAB8TkaXAAAAA1BMVEX///+nxBvIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABPElEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwafLAABhydcUAAAAABJRU5ErkJggg==" /></p>
-<!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="reminders" class="section level2">
@@ -1839,13 +1817,37 @@ Backtrace:
 <li>CAS Enrollment don’t tally.</li>
 <li>CTE Enrollment don’t tally.</li>
 <li>data of CBE in enrollment is est.</li>
-<li>BSBA has enrllment is not according to semester.</li>
+<li>BSBA has enrollment is not according to semester.</li>
 <li>Phd graduates in COA, unclear.Placed in PhDA</li>
 </ol>
+</div>
+<div id="meeting-031323" class="section level2">
+<h2>Meeting 031323</h2>
+<div id="annual-report-2022" class="section level3">
+<h3>Annual Report 2022</h3>
+<ul>
+<li><p>academic affairs. continue with visualization, and edit. data
+will be from mr. busa.</p></li>
+<li><p>after charter anniversary.</p></li>
+<li><p>president wants a draft. the president is a consultant.</p></li>
+</ul>
+</div>
+<div id="investiture-of-the-university-president" class="section level3">
+<h3>Investiture of the University President</h3>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="charter-anniversary" class="section level3">
+<h3>Charter Anniversary</h3>
+<ul>
+<li></li>
+</ul>
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmdyYWRfY29sbGVnZSA8LQ0KICBncmFkICU+JQ0KICBncm91cF9ieShDb2xsZWdlKSAlPiUNCiAgc3VtbWFyaXNlKHRvdGFsX2dyYWQgPSBzdW0oZ3JhZF9zcyksDQogICAgICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnKSAlPiUNCiAgbXV0YXRlKHBlcmNlbnRfZ3JhZCA9IHJvdW5kKCh0b3RhbF9ncmFkL3N1bShncmFkJGdyYWRfc3MpKSoxMDAsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkaWdpdHMgPSAyKSkNCmBgYA0KDQpgYGB7cn0NCiN8IG91dHB1dDogZmFsc2UNCg0KZ2dwbG90KGdyYWQsIGFlcyh4ID0gIiIsIHkgPSBncmFkX3NzLCBmaWxsID0gQ29sbGVnZSkpICsNCiAgZ2VvbV9jb2woY29sb3IgPSAiYmxhY2siKSArDQogIGdlb21fdGV4dChhZXMobGFiZWwgPSBncmFkX3NzKSwNCiAgICAgICAgICAgIHBvc2l0aW9uID0gcG9zaXRpb25fc3RhY2sodmp1c3QgPSAwLjUpKSArDQogIGNvb3JkX3BvbGFyKHRoZXRhID0gInkiKSArDQogIHNjYWxlX2ZpbGxfYnJld2VyKCkgKw0KICB0aGVtZV9idygpICsNCiAgeWxhYigiQmF5b21ib25nIENhbXB1cyIpICsNCiAgeGxhYigiIikNCmBgYA0KDQpgYGB7cn0NCiN8IG91dHB1dDogZmFsc2UNCmdncGxvdChncmFkX2NvbGxlZ2UsIGFlcyh4ID0gIiIsIHkgPSBwZXJjZW50X2dyYWQsIGZpbGwgPSBDb2xsZWdlKSkgKw0KICBnZW9tX2NvbChjb2xvciA9ICJibGFjayIpICsNCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbCA9IHBlcmNlbnRfZ3JhZCksDQogICAgICAgICAgICBwb3NpdGlvbiA9IHBvc2l0aW9uX3N0YWNrKHZqdXN0ID0gMC41KSkgKw0KICBjb29yZF9wb2xhcih0aGV0YSA9ICJ5IikgKw0KICBzY2FsZV9maWxsX2JyZXdlcigpICsNCiAgdGhlbWVfdm9pZCgpICsNCiAgeWxhYigiQmF5b21ib25nIENhbXB1cyIpDQpgYGANCg0KYGBge3J9DQpnZ3Bsb3QoZ3JhZCwgYWVzKHg9IENvbGxlZ2UsIHk9IGdyYWRfc3MsIGNvbG91cj0iZ3JlZW4iLCBsYWJlbD1OYW1lKSkrDQogIGdlb21fcG9pbnQoKSArZ2VvbV90ZXh0KGhqdXN0PTAsIHZqdXN0PTApDQpgYGANCg0KYGBge3J9DQpnZ3Bsb3QoZGF0YSA9IGdyYWQpICsgDQogIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4ID0gQ29sbGVnZSwgeSA9IGdyYWRfc3MsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9IFByb2dyYW0pKSArIGdlb21fdGV4dCgpDQpgYGANCg0KDQojIyBSZW1pbmRlcnMNCg0KMS4gQ0FTIEVucm9sbG1lbnQgZG9uJ3QgdGFsbHkuDQoyLiBDVEUgRW5yb2xsbWVudCBkb24ndCB0YWxseS4NCjMuIGRhdGEgb2YgQ0JFIGluIGVucm9sbG1lbnQgaXMgZXN0Lg0KNC4gQlNCQSBoYXMgZW5ybGxtZW50IGlzIG5vdCBhY2NvcmRpbmcgdG8gc2VtZXN0ZXIuDQo1LiBQaGQgZ3JhZHVhdGVzIGluIENPQSwgdW5jbGVhci5QbGFjZWQgaW4gUGhEQQ0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmdyYWRfY29sbGVnZSA8LQ0KICBncmFkICU+JQ0KICBncm91cF9ieShDb2xsZWdlKSAlPiUNCiAgc3VtbWFyaXNlKHRvdGFsX2dyYWQgPSBzdW0oZ3JhZF9zcyksDQogICAgICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnKSAlPiUNCiAgbXV0YXRlKHBlcmNlbnRfZ3JhZCA9IHJvdW5kKCh0b3RhbF9ncmFkL3N1bShncmFkJGdyYWRfc3MpKSoxMDAsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkaWdpdHMgPSAyKSkNCmBgYA0KDQpgYGB7cn0NCiN8IG91dHB1dDogZmFsc2UNCg0KZ2dwbG90KGdyYWQsIGFlcyh4ID0gIiIsIHkgPSBncmFkX3NzLCBmaWxsID0gQ29sbGVnZSkpICsNCiAgZ2VvbV9jb2woY29sb3IgPSAiYmxhY2siKSArDQogIGdlb21fdGV4dChhZXMobGFiZWwgPSBncmFkX3NzKSwNCiAgICAgICAgICAgIHBvc2l0aW9uID0gcG9zaXRpb25fc3RhY2sodmp1c3QgPSAwLjUpKSArDQogIGNvb3JkX3BvbGFyKHRoZXRhID0gInkiKSArDQogIHNjYWxlX2ZpbGxfYnJld2VyKCkgKw0KICB0aGVtZV9idygpICsNCiAgeWxhYigiQmF5b21ib25nIENhbXB1cyIpICsNCiAgeGxhYigiIikNCmBgYA0KDQpgYGB7cn0NCiN8IG91dHB1dDogZmFsc2UNCmdncGxvdChncmFkX2NvbGxlZ2UsIGFlcyh4ID0gIiIsIHkgPSBwZXJjZW50X2dyYWQsIGZpbGwgPSBDb2xsZWdlKSkgKw0KICBnZW9tX2NvbChjb2xvciA9ICJibGFjayIpICsNCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbCA9IHBlcmNlbnRfZ3JhZCksDQogICAgICAgICAgICBwb3NpdGlvbiA9IHBvc2l0aW9uX3N0YWNrKHZqdXN0ID0gMC41KSkgKw0KICBjb29yZF9wb2xhcih0aGV0YSA9ICJ5IikgKw0KICBzY2FsZV9maWxsX2JyZXdlcigpICsNCiAgdGhlbWVfdm9pZCgpICsNCiAgeWxhYigiQmF5b21ib25nIENhbXB1cyIpDQpgYGANCg0KYGBge3J9DQpnZ3Bsb3QoZ3JhZCwgYWVzKHg9IENvbGxlZ2UsIHk9IGdyYWRfc3MsIGNvbG91cj0iZ3JlZW4iLCBsYWJlbD1OYW1lKSkrDQogIGdlb21fcG9pbnQoKSArZ2VvbV90ZXh0KGhqdXN0PTAsIHZqdXN0PTApDQpgYGANCg0KYGBge3J9DQpnZ3Bsb3QoZGF0YSA9IGdyYWQpICsgDQogIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4ID0gQ29sbGVnZSwgeSA9IGdyYWRfc3MsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9IFByb2dyYW0pKSArIGdlb21fdGV4dCgpDQpgYGANCg0KIyMgUmVtaW5kZXJzDQoNCjEuICBDQVMgRW5yb2xsbWVudCBkb24ndCB0YWxseS4NCjIuICBDVEUgRW5yb2xsbWVudCBkb24ndCB0YWxseS4NCjMuICBkYXRhIG9mIENCRSBpbiBlbnJvbGxtZW50IGlzIGVzdC4NCjQuICBCU0JBIGhhcyBlbnJvbGxtZW50IGlzIG5vdCBhY2NvcmRpbmcgdG8gc2VtZXN0ZXIuDQo1LiAgUGhkIGdyYWR1YXRlcyBpbiBDT0EsIHVuY2xlYXIuUGxhY2VkIGluIFBoREENCg0KIyMgTWVldGluZyAwMzEzMjMNCg0KIyMjIEFubnVhbCBSZXBvcnQgMjAyMg0KDQotIGFjYWRlbWljIGFmZmFpcnMuIGNvbnRpbnVlIHdpdGggdmlzdWFsaXphdGlvbiwgYW5kIGVkaXQuIGRhdGEgd2lsbCBiZSBmcm9tIG1yLiBidXNhLg0KDQotIGFmdGVyIGNoYXJ0ZXIgYW5uaXZlcnNhcnkuDQoNCi0gcHJlc2lkZW50IHdhbnRzIGEgZHJhZnQuIHRoZSBwcmVzaWRlbnQgaXMgYSBjb25zdWx0YW50Lg0KDQojIyMgSW52ZXN0aXR1cmUgb2YgdGhlIFVuaXZlcnNpdHkgUHJlc2lkZW50DQoNCi0gDQoNCiMjIyBDaGFydGVyIEFubml2ZXJzYXJ5DQoNCi0gDQo=</div>
 
 
 

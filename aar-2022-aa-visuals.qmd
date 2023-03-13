@@ -20,6 +20,13 @@ library(tidyverse)
 ```{r}
 grad <- read_csv("/Users/mildo/OneDrive/Documents/R/NVSU-IPPRC/csv/data1.csv")
 grad <- tibble(grad)
+grad <-
+  grad %>%
+  mutate_at(vars(Level), factor)
+grad <- 
+  grad %>%
+  mutate(Level = factor(Level, levels = c("Undergraduate",
+                                        "Graduate")))
 ```
 
 ```{r}
@@ -30,8 +37,10 @@ faculty <-
   mutate_at(vars(Rank), factor)
 faculty <- 
   faculty %>%
-  mutate(Rank = factor(Rank, levels = c("Instructor", "Assistant Professor",
-                                        "Associate Professor", "Professor")))
+  mutate(Rank = factor(Rank, levels = c("Instructor",
+                                        "Assistant Professor",
+                                        "Associate Professor",
+                                        "Professor")))
 ```
 
 # CURRICULAR PROGRAMS
@@ -68,7 +77,6 @@ ggplot(data = grad,
 ggplot(data = grad) + 
   geom_point(mapping = aes(x = College, y = grad_ss,
                            label = Program)) +
-  geom_text() +
   ylab("Number of Graduates") +
   labs(title = "Distribution of Number of Graduates for 2022") +
   theme(axis.text=element_text(size=12),

@@ -52,11 +52,13 @@ ggplot(data = grad) +
 
 ## Reminders
 
-1.  CAS Enrollment don't tally.
-2.  CTE Enrollment don't tally.
-3.  data of CBE in enrollment is est.
-4.  BSBA has enrollment is not according to semester.
-5.  Phd graduates in COA, unclear.Placed in PhDA
+1. CAS Enrollment don't tally.
+2. CTE Enrollment don't tally.
+3. data of CBE in enrollment is est.
+4. BSBA has enrollment and is not according to semester.
+5. Phd graduates in COA, unclear.Placed in PhDA
+6. BAS-DVM is also BAS and DVM in graduates.
+7. BTVTEd has no graduates and enrollees for CTE Bambang.
 
 ## Meeting 031323
 

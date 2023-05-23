@@ -61,6 +61,8 @@ faculty <-
 
 ## Graduation Profile
 
+The graph below is the graduation profile of NVSU
+
 ```{r}
 ggplot(data = grad,
        aes(x = College, y = grad_ss)) +

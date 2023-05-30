@@ -1,3 +1,6 @@
-year_rep,hep_aep,oc_op,target,actual,oc_op_desc,ta_labs
-2022,hep,oc,54,59.63,Percentage of first-time licensure exam-takers that pass the licensure exams,54% (505/935)
-2022,hep,oc,72
+year_rep,hep_aep,oc_op,target,actual,oc_op_desc,t_labs,a_labs
+2022,hep,oc,64,66,Percentage of first-time licensure exam-takers that pass the licensure exams,64% (576/900),66% (418/625)
+2022,hep,oc,72,47.63,Percentage of graduates (2 years prior) that are employed,
+2022,hep,op,,54.75,Percentage of undergraduate student population enrolled in CHED-identified and RDC priority programs,44.75% (7,195/13,144)
+2022,hep,op,,76.74,Percentage of undergraduate programs with accreditation,76.74% (33/43)
+2022,aep,oc,

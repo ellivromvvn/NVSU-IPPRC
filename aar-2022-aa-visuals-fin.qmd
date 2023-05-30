@@ -1,0 +1,77 @@
+---
+title: "NVSU ANNUAL ACCOMPLISHMENT REPORT 2022"
+subtitle: "ACADEMIC AFFAIRS"
+author: IPPRC
+format:
+  docx:
+    fig-width: 5.5
+    fig-height: 3.5
+editor: visual
+execute:
+  echo: false
+  warning: false
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+```
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(ggthemes)
+```
+
+```{r}
+oc_op_data <- read_excel("csv/oc_op.xlsx")
+oc_op_data <- tibble(oc_op_data)
+```
+
+```{r}
+oc_op_data <-
+  oc_op_data |>
+  mutate_at(vars(hep_aep), factor)
+oc_op_data <- 
+  oc_op_data |>
+  mutate(hep_aep = factor(hep_aep, levels = c("hep",
+                                        "aep")))
+```
+
+```{r}
+oc_op_data <-
+  oc_op_data |>
+  mutate_at(vars(oc_op_no), factor)
+oc_op_data <- 
+  oc_op_data |>
+  mutate(oc_op_no = factor(oc_op_no, levels = c("oc1","oc1b","oc2","op1","op2")))
+```
+
+```{r}
+oc_op_plot_data <- oc_op_data |>
+  pivot_longer(c(target, actual), 
+               names_to = "t_a", 
+               values_to = "t_a_value")
+```
+
+```{r}
+oc_op_plot_data <- oc_op_plot_data |>
+  mutate(lab = case_when(t_a == 'target' ~ t_labs, t_a == 'actual' ~ a_labs))
+
+oc_op_plot_data <- oc_op_plot_data |>
+  mutate(lab=paste0(t_a_value,"%"))
+```
+
+```{r}
+ggplot(oc_op_plot_data, aes(x = oc_op_no, y = t_a_value, fill = t_a)) +
+  geom_col(position = "dodge") +
+  facet_grid(~hep_aep, scales = "free", space = "free",
+             labeller = as_labeller(c(hep='HEP', aep='AEP'))) +
+  labs(y= "Percent", x = "Outcome/Output Indicators", title="NVSU Summary of Accomplishments") +
+  scale_fill_manual(values=c("yellow3", "darkgreen"),
+                    breaks=c("actual", "target"),
+                    labels=c("Actual", "Target")) +
+  scale_x_discrete(labels=c("oc1" = "OC 1", "oc1b" = "OC 1b", "oc2" = "OC 2","op1" = "OP 1", "op2" = "OP 2")) +
+  ylim(0,101) +
+  theme_hc() +
+  theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank())
+```

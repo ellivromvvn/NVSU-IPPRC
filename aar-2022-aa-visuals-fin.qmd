@@ -4,8 +4,9 @@ subtitle: "ACADEMIC AFFAIRS"
 author: IPPRC
 format:
   docx:
-    fig-width: 5.5
-    fig-height: 3.5
+    fig-width: 8
+    fig-height: 5
+    reference-doc: aar-2022-aa-visuals-fin-template.docx
 editor: visual
 execute:
   echo: false
@@ -63,15 +64,145 @@ oc_op_plot_data <- oc_op_plot_data |>
 
 ```{r}
 ggplot(oc_op_plot_data, aes(x = oc_op_no, y = t_a_value, fill = t_a)) +
-  geom_col(position = "dodge") +
+  geom_col(position = "dodge", colour = "black") +
   facet_grid(~hep_aep, scales = "free", space = "free",
              labeller = as_labeller(c(hep='HEP', aep='AEP'))) +
-  labs(y= "Percent", x = "Outcome/Output Indicators", title="NVSU Summary of Accomplishments") +
-  scale_fill_manual(values=c("yellow3", "darkgreen"),
-                    breaks=c("actual", "target"),
+  labs(y= "Percent", x = "Outcome/Output Indicators",
+       title = "Summary of Accomplishments of Academic Affairs") +
+  scale_fill_brewer(palette = "Pastel1", breaks=c("actual", "target"),
                     labels=c("Actual", "Target")) +
   scale_x_discrete(labels=c("oc1" = "OC 1", "oc1b" = "OC 1b", "oc2" = "OC 2","op1" = "OP 1", "op2" = "OP 2")) +
   ylim(0,101) +
-  theme_hc() +
-  theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank())
+  theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) 
+```
+
+The accomplishment of the university in the academic affairs is summarized in the figure below. The university set targets for year 2022 based on specific Outcome (OC) and Output (OP) Indicators for both Higher Education Program (HEP) and Advanced Education Program (AEP) then actual accomplishments are compared. In the HEP, for OC 1, Percentage of first-time licensure exam-takers that pass the licensure exams, the actual accomplishment is higher than the target, that is 66% (418/625) vs 64% (576/900). For OC 2, Percentage of graduates (2 years prior) that are employed, the actual accomplishment did not meet the target, that is 47.63% (583/1224) vs 72% (910/1264). For OP 1, Percentage of undergraduate student population enrolled in CHED identified and RDC priority programs, and OP 2, Percentage of undergraduate programs with accreditation, actual accomplishments fell short against the targets, that is 62.48% (8214/13146) vs 77% (12705/16500) and 68.75% (33/48) vs 73.33% (33/45).
+
+On the Other hand, in the AEP, for OC 1b, Percentage of graduate school faculty engaged in research work applied in any of the following: b. actively pursuing in the last three (3) years (investigative research, basic and applied scientific research, policy research, social science research), actual accomplishment did not meet the target, that is 25.97% (20/77) vs 61.6% (37/60). For OP 1, Percentage of graduate students enrolled in research degree programs, the actual accomplishment overly exceeded the target, that is 100% (693/693) vs 1.14% (8/700). For OP2, Percentage of accredited graduate programs, the actual accomplishment is the same as the target, that is 65.39% (17/26).
+
+```{r}
+enrol1_data <- read_excel("csv/enrol1.xlsx")
+enrol1_data <- tibble(enrol1_data)
+```
+
+```{r}
+enrol1_data <-
+  enrol1_data |>
+  mutate_at(vars(sem), factor)
+enrol1_data <- 
+  enrol1_data |>
+  mutate(sem = factor(sem, levels = c("2nd", "my", "1st")))
+```
+
+```{r}
+enrol1_data <-
+  enrol1_data |>
+  mutate_at(vars(level), factor)
+enrol1_data <- 
+  enrol1_data |>
+  mutate(level = factor(level, levels = c("cert", "bac", "mas", "doc")))
+```
+
+```{r}
+enrol1_data <-
+  enrol1_data |>
+  mutate_at(vars(campus), factor)
+enrol1_data <- 
+  enrol1_data |>
+  mutate(campus = factor(campus, levels = c("bay", "bam")))
+```
+
+```{r}
+enrol1_vjust <- c(
+  1,-.5,1,1,-.5,1,1,-.5,1,1,-.5,1,1,-.5,1,1,1,1,1
+)
+enrol1_colour <- c(
+  "white","black","white","white","black","white","white","black","white","white","black",
+  "white","white","black","white","white","white","white","white"
+)
+```
+
+
+```{r}
+ggplot(enrol1_data, aes(x = sem, y = no_enrol, fill = sem)) +
+  geom_col(position = "dodge", colour = "black") +
+  geom_text(aes(label = no_enrol), vjust = enrol1_vjust, colour = "black", size = 3.2) +
+  facet_grid(level~campus, scales = "free",
+             labeller = as_labeller(c(bay='Bayombong', bam='Bambang', cert='Certificate', bac='Baccalaureate',
+                                      mas='Masters', doc='Doctoral'))) +
+  labs(title="Summary of Enrollment for 2022", x="Semester", y = "Number of Enrollees") +
+  scale_x_discrete(labels=c("2nd" = "2nd SY 21-22", "my" = "MY SY 21-22", "1st" = "1st SY 22-23")) +
+  scale_fill_brewer(palette="Pastel1") +
+  theme(plot.title = element_text(hjust = 0.5), strip.text.x = element_text(size = 10),
+        strip.text.y = element_text(size = 9), legend.position="none")
+```
+
+```{r}
+enrol1_data |>
+  filter(
+    sem == "2nd"
+  ) |>
+  select(no_enrol) |>
+  sum()
+```
+
+```{r}
+enrol1_data |>
+  select(no_enrol) |>
+  sum()
+```
+
+The total number of enrol   Summary of enrolment according to campus and level for 2022 is shown in the figure.
+
+```{r}
+licensure <- read_excel(
+  "csv/licensure.xlsx"
+)
+licensure <- tibble(
+  licensure
+)
+```
+
+```{r}
+ggplot(licensure, aes(x = year, y = nvsu_rating)) +
+  geom_line(color = "lightskyblue3", linewidth = 2) +
+  geom_point(color = "lightskyblue3", size = 4) +
+  labs(
+    title = "Performance of NVSU's First Time Takers\nin the Licensure Examintions for the Past 5 Years",
+    y = "Rating in Percent",
+    x = "Year"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+grad1 <- read_excel("csv/grad1.xlsx")
+grad1 <- tibble(grad1)
+```
+
+```{r}
+grad1 <- grad1 |>
+  mutate_if(is.character, as.factor) |>
+  mutate(campus = factor(campus, levels = c("bay", "bam"))) |>
+  mutate(level = factor(level, levels = c("cert", "bac", "mas", "doc")))
+```
+
+```{r}
+ggplot(
+  grad1, aes(x = level, y = no_grad)
+) +
+  geom_col(fill = "steelblue") +
+  facet_grid(~campus, scales = "free", space = "free")
+
+ggplot(enrol1_data, aes(x = sem, y = no_enrol, fill = sem)) +
+  geom_col(position = "dodge", colour = "black") +
+  geom_text(aes(label = no_enrol), vjust = enrol1_vjust, colour = "black", size = 3.2) +
+  facet_grid(level~campus, scales = "free",
+             labeller = as_labeller(c(bay='Bayombong', bam='Bambang', cert='Certificate', bac='Baccalaureate',
+                                      mas='Masters', doc='Doctoral'))) +
+  labs(title="Summary of Enrollment for 2022", x="Semester", y = "Number of Enrollees") +
+  scale_x_discrete(labels=c("2nd" = "2nd SY 21-22", "my" = "MY SY 21-22", "1st" = "1st SY 22-23")) +
+  scale_fill_brewer(palette="Pastel1") +
+  theme(plot.title = element_text(hjust = 0.5), strip.text.x = element_text(size = 10),
+        strip.text.y = element_text(size = 9), legend.position="none")
 ```

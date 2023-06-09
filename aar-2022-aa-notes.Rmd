@@ -77,3 +77,9 @@ ggplot(data = grad) +
 ### Charter Anniversary
 
 - 
+
+```{r}
+geom_text(aes(label=t_a_value), vjust=-1, color="black",
+            position = position_dodge(.9), size=2.4)+
+```
+

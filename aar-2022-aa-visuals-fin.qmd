@@ -4,8 +4,8 @@ subtitle: "ACADEMIC AFFAIRS"
 author: IPPRC
 format:
   docx:
-    fig-width: 8
-    fig-height: 5
+    fig-width: 10
+    fig-height: 6.2
     reference-doc: aar-2022-aa-visuals-fin-template.docx
 editor: visual
 execute:
@@ -21,7 +21,12 @@ knitr::opts_chunk$set(fig.align = 'center')
 library(readxl)
 library(tidyverse)
 library(ggthemes)
+library(gt)
+library(ggpubr)
+library(tidytext)
 ```
+
+## OC OP
 
 ```{r}
 oc_op_data <- read_excel("csv/oc_op.xlsx")
@@ -63,22 +68,90 @@ oc_op_plot_data <- oc_op_plot_data |>
 ```
 
 ```{r}
-ggplot(oc_op_plot_data, aes(x = oc_op_no, y = t_a_value, fill = t_a)) +
+oc_op_plot <- ggplot(oc_op_plot_data, aes(x = oc_op_no, y = t_a_value, fill = t_a)) +
   geom_col(position = "dodge", colour = "black") +
   facet_grid(~hep_aep, scales = "free", space = "free",
              labeller = as_labeller(c(hep='HEP', aep='AEP'))) +
   labs(y= "Percent", x = "Outcome/Output Indicators",
-       title = "Summary of Accomplishments of Academic Affairs") +
+       title = "Summary of Accomplishments in Academic Affairs for 2022") +
   scale_fill_brewer(palette = "Pastel1", breaks=c("actual", "target"),
                     labels=c("Actual", "Target")) +
   scale_x_discrete(labels=c("oc1" = "OC 1", "oc1b" = "OC 1b", "oc2" = "OC 2","op1" = "OP 1", "op2" = "OP 2")) +
   ylim(0,101) +
-  theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) 
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.title = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+oc_op_plot
 ```
+
+```{r}
+ggsave(oc_op_plot, filename = "images/oc_op.png", width = 6.5, height = 4, dpi = 2000)
+```
+
 
 The accomplishment of the university in the academic affairs is summarized in the figure below. The university set targets for year 2022 based on specific Outcome (OC) and Output (OP) Indicators for both Higher Education Program (HEP) and Advanced Education Program (AEP) then actual accomplishments are compared. In the HEP, for OC 1, Percentage of first-time licensure exam-takers that pass the licensure exams, the actual accomplishment is higher than the target, that is 66% (418/625) vs 64% (576/900). For OC 2, Percentage of graduates (2 years prior) that are employed, the actual accomplishment did not meet the target, that is 47.63% (583/1224) vs 72% (910/1264). For OP 1, Percentage of undergraduate student population enrolled in CHED identified and RDC priority programs, and OP 2, Percentage of undergraduate programs with accreditation, actual accomplishments fell short against the targets, that is 62.48% (8214/13146) vs 77% (12705/16500) and 68.75% (33/48) vs 73.33% (33/45).
 
 On the Other hand, in the AEP, for OC 1b, Percentage of graduate school faculty engaged in research work applied in any of the following: b. actively pursuing in the last three (3) years (investigative research, basic and applied scientific research, policy research, social science research), actual accomplishment did not meet the target, that is 25.97% (20/77) vs 61.6% (37/60). For OP 1, Percentage of graduate students enrolled in research degree programs, the actual accomplishment overly exceeded the target, that is 100% (693/693) vs 1.14% (8/700). For OP2, Percentage of accredited graduate programs, the actual accomplishment is the same as the target, that is 65.39% (17/26).
+
+```{r}
+oc_op1 <- read_excel("csv/oc_op1.xlsx")
+oc_op1 <- tibble(oc_op1)
+```
+
+```{r}
+oc_op1 <- oc_op1 |>
+  mutate(year = as.character(year)) |>
+  mutate_at(vars(hep_aep, oc_op_no, year), factor) |>
+  mutate(
+    hep_aep = factor(hep_aep, levels = c("hep", "aep"))
+  ) |>
+  mutate(
+    oc_op_no = factor(oc_op_no, levels = c(
+      "oc1","oc1b","oc2","op1","op2"
+    ))
+  ) |>
+  mutate(
+    year = factor(year, levels = c("2021", "2022"))
+  )
+```
+
+
+```{r}
+oc_op1_plot <- ggplot(oc_op1, aes(x = oc_op_no, y = value, fill = year)) +
+  geom_col(position = "dodge", colour = "black") +
+  facet_grid(~hep_aep, scales = "free", space = "free",
+             labeller = as_labeller(c(hep='HEP', aep='AEP'))) +
+  labs(y= "Percentage (%)", x = "Outcome/Output Indicators",
+       title = "Comparison of 2021 and 2022 Accomplishments in Academic Affairs") +
+  scale_fill_brewer(palette = "Pastel1", breaks=c("2021", "2022"),
+                    labels=c("2021", "2022")) +
+  scale_x_discrete(labels=c("oc1" = "OC 1", "oc1b" = "OC 1b", "oc2" = "OC 2","op1" = "OP 1", "op2" = "OP 2")) +
+  ylim(0,101) +
+  geom_text(
+    aes(label = value), vjust = 1.3,
+    colour = "black", size = 2.9,
+    position = position_dodge(.9)
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.title = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank()
+  )
+
+oc_op1_plot
+```
+
+```{r}
+ggsave(oc_op1_plot, filename = "images/oc_op1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+## Enrolment
 
 ```{r}
 enrol1_data <- read_excel("csv/enrol1.xlsx")
@@ -114,33 +187,40 @@ enrol1_data <-
 
 ```{r}
 enrol1_vjust <- c(
-  1,-.5,1,1,-.5,1,1,-.5,1,1,-.5,1,1,-.5,1,1,1,1,1
+  1.3,-.5,1.3,1.3,-.5,1.3,1.3,-.5,1.3,1.3,-.5,1.3,1.3,1.3,1.3,1.3,-.5,1.3
 )
 enrol1_colour <- c(
   "white","black","white","white","black","white","white","black","white","white","black",
-  "white","white","black","white","white","white","white","white"
+  "white","white","white","white","white","black","white"
 )
 ```
 
 
 ```{r}
-ggplot(enrol1_data, aes(x = sem, y = no_enrol, fill = sem)) +
+enrol1_plot <- ggplot(enrol1_data, aes(x = sem, y = no_enrol, fill = sem)) +
   geom_col(position = "dodge", colour = "black") +
   geom_text(aes(label = no_enrol), vjust = enrol1_vjust, colour = "black", size = 3.2) +
-  facet_grid(level~campus, scales = "free",
+  facet_grid(level~campus, scales = "free", space = "free_x",
              labeller = as_labeller(c(bay='Bayombong', bam='Bambang', cert='Certificate', bac='Baccalaureate',
                                       mas='Masters', doc='Doctoral'))) +
-  labs(title="Summary of Enrollment for 2022", x="Semester", y = "Number of Enrollees") +
+  labs(title="Summary of Enrollment for 2022", x="Semesters", y = "") +
   scale_x_discrete(labels=c("2nd" = "2nd SY 21-22", "my" = "MY SY 21-22", "1st" = "1st SY 22-23")) +
   scale_fill_brewer(palette="Pastel1") +
-  theme(plot.title = element_text(hjust = 0.5), strip.text.x = element_text(size = 10),
-        strip.text.y = element_text(size = 9), legend.position="none")
+  theme(plot.title = element_text(hjust = 0.5), strip.text.x = element_text(size = 10), strip.text.y = element_text(size = 7), legend.position="none", axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_blank())
+enrol1_plot
 ```
+
+```{r}
+ggsave(enrol1_plot, filename = "images/enrol1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
 
 ```{r}
 enrol1_data |>
   filter(
-    sem == "2nd"
+    sem == "1st" & campus == "bam"
   ) |>
   select(no_enrol) |>
   sum()
@@ -154,6 +234,8 @@ enrol1_data |>
 
 The total number of enrol   Summary of enrolment according to campus and level for 2022 is shown in the figure.
 
+## Licensure
+
 ```{r}
 licensure <- read_excel(
   "csv/licensure.xlsx"
@@ -164,16 +246,72 @@ licensure <- tibble(
 ```
 
 ```{r}
-ggplot(licensure, aes(x = year, y = nvsu_rating)) +
+licensure_plot <- ggplot(licensure, aes(x = year, y = nvsu_rating)) +
   geom_line(color = "lightskyblue3", linewidth = 2) +
   geom_point(color = "lightskyblue3", size = 4) +
   labs(
     title = "Performance of NVSU's First Time Takers\nin the Licensure Examintions for the Past 5 Years",
-    y = "Rating in Percent",
+    y = "Rating in Percentage",
     x = "Year"
   ) +
   theme(plot.title = element_text(hjust = 0.5))
+
+licensure_plot
 ```
+
+```{r}
+ggsave(licensure_plot, filename = "images/licensure.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+```{r}
+licensure1 <- read_excel("csv/licensure1.xlsx")
+licensure1 <- tibble(licensure1)
+```
+
+```{r}
+licensure1 <- licensure1 |>
+  mutate(type = as.factor(type)) |>
+  mutate(type = factor(type, levels = c("nvsu", "nat")))
+```
+
+
+```{r}
+licensure1_plot <- ggplot(licensure1, aes(x = year, y = rating, color = type)) +
+  geom_line(linewidth = 1.2) +
+  geom_label(aes(label = rating), show.legend = FALSE) +
+  labs(
+    title = "Performance of NVSU's First Time Takers\nin the Licensure Examintions for the Past 5 Years",
+    y = "Percentage (%)",
+    x = "Year"
+  ) +
+  scale_color_manual(
+    values=c("#9999CC","#CC6666"),
+    name = "Passing Rate",
+    labels = c("NVSU", "National")
+  ) +
+  coord_cartesian(xlim = c(2017.9, 2022.1), ylim = c(50.7, 72)) +
+  annotate(
+    "text", x = c(2018.6, 2019.15, 2020, 2020.92, 2022),
+    y = c(71.5, 64, 65, 61.57, 68), 
+    label = c("(+17.28%)", "(+8.02%)", "(+12.14%)", "(+3.24%)",
+    "(+4.54%)"),
+    color = "green4"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+
+licensure1_plot
+```
+
+```{r}
+ggsave(licensure1_plot, filename = "images/licensure1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+## Graduates
 
 ```{r}
 grad1 <- read_excel("csv/grad1.xlsx")
@@ -188,21 +326,390 @@ grad1 <- grad1 |>
 ```
 
 ```{r}
-ggplot(
-  grad1, aes(x = level, y = no_grad)
-) +
-  geom_col(fill = "steelblue") +
-  facet_grid(~campus, scales = "free", space = "free")
-
-ggplot(enrol1_data, aes(x = sem, y = no_enrol, fill = sem)) +
-  geom_col(position = "dodge", colour = "black") +
-  geom_text(aes(label = no_enrol), vjust = enrol1_vjust, colour = "black", size = 3.2) +
-  facet_grid(level~campus, scales = "free",
-             labeller = as_labeller(c(bay='Bayombong', bam='Bambang', cert='Certificate', bac='Baccalaureate',
-                                      mas='Masters', doc='Doctoral'))) +
-  labs(title="Summary of Enrollment for 2022", x="Semester", y = "Number of Enrollees") +
-  scale_x_discrete(labels=c("2nd" = "2nd SY 21-22", "my" = "MY SY 21-22", "1st" = "1st SY 22-23")) +
-  scale_fill_brewer(palette="Pastel1") +
-  theme(plot.title = element_text(hjust = 0.5), strip.text.x = element_text(size = 10),
-        strip.text.y = element_text(size = 9), legend.position="none")
+grad1_vjust <- c(
+  1.3, -.5, -.5, 1.3, 1.3, -.5, -.5
+)
 ```
+
+
+```{r}
+grad1_plot <- ggplot(
+  grad1, aes(x = level, y = no_grad, fill = level)
+) +
+  geom_col(
+    colour = "black"
+  ) +
+  facet_grid(
+    ~campus, scales = "free", space = "free",
+    labeller = as_labeller(c(bay = "Bayombong", bam = "Bambang"))
+  ) +
+  scale_fill_brewer(
+    palette="Pastel1" 
+  ) +
+  labs(
+    title = "Summary of Graduates for 2022",
+    x = "Programs",
+    y = ""
+  ) +
+  scale_x_discrete(
+    labels = c(
+      "cert" = "Certificate", "bac" = "Baccalaureate",
+      "mas" = "Masters", "doc" = "Doctoral"
+    )
+  ) +
+  geom_text(
+    aes(label = no_grad), vjust = grad1_vjust,
+    colour = "black", size = 3.2
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position="none",
+    strip.text.x = element_text(size = 10),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+
+grad1_plot
+```
+
+```{r}
+ggsave(grad1_plot, filename = "images/grad1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+## Faculty Profile
+
+```{r}
+fac1 <- read_excel("csv/fac1.xlsx")
+fac1 <- tibble(fac1)
+```
+
+```{r}
+fac1 <- fac1 |>
+  mutate(year = as.character(year)) |>
+  mutate_if(is.character, as.factor) |>
+  mutate(
+    position = factor(
+      position, 
+      levels = c(
+        "Instructor/EI",
+        "Assistant Professor",
+        "Associate Professor",
+        "Professor"
+      )
+    )
+  ) |>
+  mutate(
+    year = factor(year, levels = c("2021", "2022"))
+  )
+```
+
+```{r}
+fac1_plot <- ggplot(
+  fac1, aes(x = position, y = number, fill = year)
+) +
+  geom_col(
+    colour = "black",
+    position = "dodge"
+  ) +
+  scale_fill_brewer(
+    palette="Pastel1" 
+  ) +
+  labs(
+    title = "Comparison of 2021 and 2022 Faculty Profile",
+    x = "Positions",
+    y = ""
+  ) +
+  geom_text(
+    aes(label = number), vjust = 1.3,
+    colour = "black", size = 3.2,
+    position = position_dodge(.9)
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.title = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_blank(),
+  )
+
+fac1_plot
+```
+
+```{r}
+ggsave(fac1_plot, filename = "images/fac1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+## Employment
+
+```{r}
+employ_vjust <- c(
+  1.3, -.5, -.5, 1.3, 1.3, -.5, -.5
+)
+```
+
+```{r}
+employ <- read_excel("csv/employ.xlsx")
+employ <- tibble(employ) |>
+  select(campus, college, program, status, remarks)
+```
+
+```{r}
+employ1 <- employ |>
+  mutate(
+    campus = as.factor(campus),
+  ) |>
+  mutate(campus = factor(campus, levels = c("bay", "bam"))) |>
+  select(campus, college, status) |>
+  filter(status == "Employed")
+```
+
+
+```{r}
+employ_vjust <- c(
+  1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, -.5, -.5
+)
+employ_color <- c(
+  "darkgreen", "red", "pink", "gray", "blue", "lightgreen",
+  "purple4", "yellow", "yellow"
+)
+```
+
+
+```{r}
+employ1_plot <- ggplot(employ1, aes(x = fct_infreq(college), fill = college)) +
+  geom_bar(colour = "black", fill = employ_color) +
+  facet_grid(
+    ~campus, scales = "free", space = "free",
+    labeller = as_labeller(c(bay = "Bayombong", bam = "Bambang"))
+  ) +
+  geom_text(
+    aes(label = after_stat(count)),
+    stat = "count", vjust = employ_vjust, colour = "black"
+  ) +
+  labs(
+    title = "Number of Tracked Graduates Who are Employed After 2 Years Per College",
+    x = "Colleges",
+    y = ""
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    strip.text.x = element_text(size = 10),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank()
+  )
+
+employ1_plot
+```
+
+```{r}
+ggsave(employ1_plot, filename = "images/employ1.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+```{r}
+employ |>
+  count(status) |>
+  mutate(
+    percent = round((n / sum(n))*100, digits = 2)
+  ) |>
+  gt()
+```
+
+```{r}
+employ |>
+  filter(status == "Employed" | status == "Unemployed")
+```
+
+```{r}
+418/1202
+```
+
+```{r}
+employ |>
+  group_by(campus, college) |>
+  count(status) |>
+  filter(status == "Employed")
+```
+
+## Accreditation
+
+```{r}
+accre <- read_excel("csv/accre.xlsx")
+accre<- tibble(accre)
+```
+
+```{r}
+accre <- accre |>
+  mutate(
+    campus = as.factor(campus),
+    hep_aep = as.factor(hep_aep),
+    status = as.factor(status)
+  ) |>
+  mutate(campus = factor(campus, levels = c("bay", "bam"))) |>
+  mutate(hep_aep = factor(hep_aep, levels = c("hep", "aep"))) |>
+  mutate(status = factor(status, levels = c(
+    "NA", "CS", "Level 1", "Level 2", "Level 3", "Level 4"
+  )))
+```
+
+```{r}
+accre |>
+  filter(hep_aep == "hep" & campus == "bay") |>
+  select(college, status) |>
+  group_by(college) |>
+  count(status)
+```
+
+```{r}
+accre_plot <- ggplot(accre, aes(x = campus, fill = status)) +
+  geom_bar(
+    colour = "black",
+    position = position_dodge2(preserve = "single", width = .9)
+  ) +
+  scale_fill_brewer(palette = "Pastel1") +
+  geom_text(
+    aes(label = after_stat(count)),
+    stat = "count", vjust = 1.3, colour = "black",
+    position = position_dodge2(preserve = "single", width = .9)
+  ) +
+  facet_grid(
+    ~hep_aep, scales = "free", space = "free",
+    labeller = as_labeller(
+      c(
+        hep = "Higher Education Program",
+        aep = "Advanced Education Program"
+      )
+    )
+  ) +
+  labs(
+    title = "Accreditation Status of HEP and AEP Per Campus",
+    x = "Campus",
+    y = "",
+    fill = "Status"
+  ) +
+  scale_x_discrete(
+    labels = c(
+      "bay" = "Bayombong", "bam" = "Bambang"
+    )
+  ) +
+  theme(
+    strip.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_blank(),
+  )
+
+accre_plot
+```
+
+```{r}
+ggsave(accre_plot, filename = "images/accre.png", width = 6.5, height = 4, dpi = 2000)
+```
+
+## Scholarship
+
+```{r}
+schol <- read_xlsx("csv/schol.xlsx")
+schol <- tibble(schol)
+```
+
+```{r}
+schol <- schol |>
+  mutate(campus = as.factor(campus)) |>
+  mutate(campus = factor(campus, levels = c("bay", "bam"))) |>
+  mutate(type = reorder_within(type, nos, campus))
+```
+
+```{r}
+schol1 <- schol |>
+  filter(campus == "bay")
+schol2 <- schol |>
+  filter(campus == "bam")
+```
+
+
+```{r}
+schol_plot <- ggplot(schol, aes(x = nos , y = reorder(type, -nos))) +
+  geom_col(color = "black", fill = "steelblue") +
+  facet_grid(
+    rows = vars(campus), scales = "free", space = "free",
+    labeller = as_labeller(c(bay = "Bayombong", bam = "Bambang"))
+  ) +
+  geom_text(
+    aes(label = nos),
+    vjust = .4, hjust = -.15, colour = "black", size = 3
+  ) +
+  coord_cartesian(xlim=c(0,1050)) +
+  scale_y_reordered() +
+  labs(
+    title = "Number of Scholars According Campus\nand Type of Grant",
+    x = "",
+    y = ""
+  ) +
+  theme(
+    strip.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+
+schol_plot
+```
+
+```{r}
+ggsave(schol_plot, filename = "images/schol.png", width = 6.5, height = 5, dpi = 2000)
+```
+
+```{r}
+schol1_plot <- ggplot(schol1, aes(x = nos, y = fct_infreq(type, nos))) +
+  geom_col(color = "black", fill = "steelblue") +
+  geom_text(
+    aes(label = nos),
+    vjust = .35, hjust = -.2, colour = "black", size = 3
+  ) +
+  coord_cartesian(xlim=c(0,1050)) +
+  labs(
+    title = "Number of Scholars According Campus\nand Type of Grant",
+    x = "",
+    y = ""
+  ) +
+  theme(
+    strip.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+  )
+
+schol1_plot
+```
+
+
+
+```{r}
+schol2_plot <- ggplot(schol2, aes(x = nos, y = fct_infreq(type, nos))) +
+  geom_col(color = "black", fill = "steelblue") +
+  geom_text(
+    aes(label = nos),
+    vjust = .35, hjust = -.2, colour = "black", size = 3
+  ) +
+  coord_cartesian(xlim=c(0,1050)) +
+  labs(
+    title = "Number of Scholars According Campus\nand Type of Grant",
+    x = "",
+    y = ""
+  ) +
+  theme(
+    strip.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+  )
+
+schol2_plot
+```
+
+
